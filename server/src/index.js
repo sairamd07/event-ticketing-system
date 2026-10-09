@@ -171,6 +171,10 @@ app.post("/api/check-in", requireOrganizer, (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Ticketing API on http://localhost:${port}`);
-});
+export default app;
+
+if (process.env.VERCEL !== "1") {
+  app.listen(port, () => {
+    console.log(`Ticketing API on http://localhost:${port}`);
+  });
+}
